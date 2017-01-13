@@ -9,10 +9,23 @@
 	</body>
 	<script type="text/javascript">
 
+	var calculator = {
+		sum: function(x, y) {
+			return x + y;
+		},
+		diff: function(x, y) {
+			return x - y;
+		}
+	}
 		// Paste in the test code here.
-		describe('calculator', function() {
+		describe('calculator.sum', function() {
 			it('1+2 should equal 3', function() {
-				expect(1 + 2).toBe(3);
+				expect(calculator.sum(1,2)).toBe(3);
+			});
+		});
+		describe('calculator.diff', function() {
+			it('1-2 should equal -1', function() {
+				expect(calculator.diff(1,2)).toBe(-1);
 			});
 		});
 
