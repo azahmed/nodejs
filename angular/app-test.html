@@ -17,41 +17,50 @@
 	src="https://code.angularjs.org/1.4.0-rc.2/angular-mocks.js"></script>
 </head>
 <body ng-app="calculatorApp">
-	<!-- This div element corresponds to the  CalculatorController we created via the JavaScript-->
-	<div ng-controller="CalculatorController">
-		<input ng-model="x" type="number"> <input ng-model="y"
-			type="number"> <strong>{{z}}</strong>
-		<!-- the value for ngClick maps to the sum function within the controller body -->
-		<input type="button" ng-click="sum()" value="+">
-	</div>
-  <script type="text/javascript" src="./WebContent/js/calculatorApp.js"></script>
-  <script type="text/javascript" src="./WebContent/controller/CalculatorController.js"></script>
-	<script type="text/javascript">
 
+	<script type="text/javascript" src="./WebContent/js/calculatorApp.js"></script>
+	<script type="text/javascript"
+		src="./WebContent/controller/CalculatorController.js"></script>
+	<script type="text/javascript">
 		// load the app
 		angular.element(document).ready(function() {
-   			angular.bootstrap(document, ['calculatorApp']);
+			angular.bootstrap(document, [ 'calculatorApp' ]);
 		});
 
 		/*Test*/
-		describe('calculator', function () {
+		describe('calculator', function() {
 			beforeEach(module('calculatorApp'));
 			var $controller;
-			beforeEach(
-				inject(function(_$controller_) {
+			beforeEach(inject(function(_$controller_) {
 				$controller = _$controller_;
-				
-				}));
-			describe('sum', function(){
-				it('1 + 1 should be 2', function(){
+
+			}));
+			describe('sum', function() {
+				it('1 + 1 should be 2', function() {
 					var $scope = {};
-					var controller = $controller('CalculatorController', {$scope: $scope});
+					var controller = $controller('CalculatorController', {
+						$scope : $scope
+					});
 					$scope.x = 1;
 					$scope.y = 2;
 					$scope.sum();
 					expect($scope.z).toBe(3);
 				});
 			});
+
+			describe('subtract', function() {
+				it('1 - 1 should be 0', function() {
+					var $scope = {};
+					var controller = $controller('CalculatorController', {
+						$scope : $scope
+					});
+					$scope.x = 1;
+					$scope.y = 1;
+					$scope.subtract();
+					expect($scope.z).toBe(0);
+				});
+			});
+
 		});
 	</script>
 </body>
